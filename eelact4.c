@@ -16,7 +16,7 @@ struct Customer {
 };
 
 
-int calculateCibil(struct Customer c) {
+int calculatecibil(struct Customer c) {
     int score = 300;
 
     
@@ -63,14 +63,14 @@ int calculateCibil(struct Customer c) {
 }
 
 
-void inputCustomers(struct Customer customers[], int n) {
+void inputcustomers(struct Customer customers[], int n) {
     for (int i = 0; i < n; i++) {
         printf("\n====================================================================");
         printf("\nEnter details for Customer %d", i + 1);
         printf("\n====================================================================");
 
         printf("\nName: ");
-        scanf(" %[^\n]", customers[i].name);
+        scanf(" %c", customers[i].name);
         printf("Age: ");
         scanf("%d", &customers[i].age);
         printf("Account Number: ");
@@ -85,11 +85,11 @@ void inputCustomers(struct Customer customers[], int n) {
         scanf("%d", &customers[i].income);
 
       
-        customers[i].cibil_score = calculateCibil(customers[i]);
+        customers[i].cibil_score = calculatecibil(customers[i]);
     }
 }
 
-void sortByCibil(struct Customer customers[], int n) {
+void ascending(struct Customer customers[], int n) {
     struct Customer temp;
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -103,7 +103,7 @@ void sortByCibil(struct Customer customers[], int n) {
 }
 
 
-void displayCustomers(struct Customer customers[], int n) {
+void displaycustomers(struct Customer customers[], int n) {
     printf("\n\n============================= CUSTOMER REPORT =============================\n");
     printf("%-20s %-5s %-12s %-10s %-20s %-20s %-10s %-12s\n",
            "Name", "Age", "Acc No", "Loans", "Credit Util(%)",
@@ -127,10 +127,11 @@ int main() {
     printf("\n              CIBIL SCORE CALCULATION SYSTEM (10 CUSTOMERS)");
     printf("\n====================================================================\n");
 
-    inputCustomers(customers, MAX_CUSTOMERS);
-    sortByCibil(customers, MAX_CUSTOMERS);
-    displayCustomers(customers, MAX_CUSTOMERS);
+    inputcustomers(customers, MAX_CUSTOMERS);
+    ascending(customers, MAX_CUSTOMERS);
+    displaycustomers(customers, MAX_CUSTOMERS);
     
 
     return 0;
+
 }
