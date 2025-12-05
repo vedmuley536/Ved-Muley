@@ -71,7 +71,7 @@ void inputCustomers(struct Customer customers[], int n) {
         printf("\n====================================================================");
 
         printf("\nName: ");
-        scanf(" %[^\n]", customers[i].name);
+        scanf(" %c", customers[i].name);
         printf("Age: ");
         scanf("%d", &customers[i].age);
         printf("Account Number: ");
@@ -90,7 +90,7 @@ void inputCustomers(struct Customer customers[], int n) {
     }
 }
 
-void sortByCibil(struct Customer customers[], int n) {
+void ascending(struct Customer customers[], int n) {
     struct Customer temp;
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -120,7 +120,7 @@ void displayCustomers(struct Customer customers[], int n) {
     }
 }
 
-void searchByName(struct Customer customers[], int n, char search_name[]) {
+void searchbyname(struct Customer customers[], int n, char search_name[]) {
     for (int i = 0; i < n; i++) {
         if (strcmp(customers[i].name, search_name) == 0) {
             printf("\n\n================ CUSTOMER DETAILS FOUND ================\n");
@@ -152,14 +152,15 @@ int main() {
     printf("\n====================================================================\n");
 
     inputCustomers(customers, MAX_CUSTOMERS);
-    sortByCibil(customers, MAX_CUSTOMERS);
+    ascending(customers, MAX_CUSTOMERS);
     displayCustomers(customers, MAX_CUSTOMERS);
     
     printf("\n\nEnter the name of the customer to search: ");
     scanf(" %[^\n]", search_name);
 
-    searchByName(customers, MAX_CUSTOMERS, search_name);
+    searchbyname(customers, MAX_CUSTOMERS, search_name);
     
 
     return 0;
+
 }
